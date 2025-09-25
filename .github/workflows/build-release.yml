@@ -53,19 +53,27 @@ jobs:
     
     permissions:
       contents: write
+      actions: read
     
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
       - name: Download all artifacts
         uses: actions/download-artifact@v4
+        with:
+          merge-multiple: true
+          
+      - name: List downloaded files
+        run: find . -name "*.exe" -o -name "*.dmg" -o -name "*.AppImage" | head -20
         
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            electron-app-windows-latest/**/*
-            electron-app-macos-latest/**/*
-            electron-app-ubuntu-latest/**/*
+            **/*.exe
+            **/*.dmg
+            **/*.AppImage
           draft: false
           prerelease: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
