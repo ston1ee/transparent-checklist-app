@@ -1,0 +1,42 @@
+{
+  "name": "transparent-checklist-app",
+  "version": "1.0.0",
+  "description": "A transparent desktop checklist application that stays always on top",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "dist": "electron-builder --publish=never"
+  },
+  "keywords": ["checklist", "desktop", "transparent", "always-on-top"],
+  "author": "ston1ee",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^26.0.0",
+    "electron-builder": "^24.6.4"
+  },
+  "build": {
+    "appId": "com.ston1ee.transparent-checklist",
+    "productName": "Transparent Checklist",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*",
+      "!README.md",
+      "!.gitignore"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "icon.ico"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "icon.icns"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "icon.png"
+    }
+  }
+}
