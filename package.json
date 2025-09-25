@@ -24,19 +24,20 @@
     "files": [
       "**/*",
       "!README.md",
-      "!.gitignore"
+      "!.gitignore",
+      "!.github"
     ],
     "win": {
       "target": "nsis",
-      "icon": "icon.ico"
+      "icon": "assets/icon.ico"
     },
     "mac": {
       "target": "dmg",
-      "icon": "icon.icns"
+      "icon": "assets/icon.icns"
     },
     "linux": {
       "target": "AppImage",
-      "icon": "icon.png"
+      "icon": "assets/icon.png"
     }
   }
 }
