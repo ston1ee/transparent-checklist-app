@@ -1,11 +1,9 @@
 name: Build and Release Electron App
-
 on:
   push:
     tags:
       - 'v*.*.*'
   workflow_dispatch:
-
 jobs:
   build:
     runs-on: ${{ matrix.os }}
@@ -25,15 +23,6 @@ jobs:
         
     - name: Install dependencies
       run: npm install
-      
-    - name: Create placeholder icons
-      run: |
-        mkdir -p assets
-        # Create simple placeholder icon files (actual icons would be better)
-        echo "Placeholder" > assets/icon.ico
-        echo "Placeholder" > assets/icon.icns
-        echo "Placeholder" > assets/icon.png
-      shell: bash
       
     - name: Build Electron app
       run: npm run build
